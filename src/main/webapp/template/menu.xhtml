@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<!-- 
+Menu da aplicação.
+ -->
+<h:form id="menuForm">
+
+	<p:toolbar id="menuToolBar">
+		<p:toolbarGroup align="left">
+			<p:menuButton value="#{message['menu.listagem']}">
+				<p:menuitem value="#{message['menu.dependencia']}"
+					outcome="/paginas/private/listagens/listagemDependencia.xhtml?faces-redirect=true"
+					ajax="false" />
+				<p:menuitem value="#{message['menu.sistema']}"
+					outcome="/paginas/private/listagens/listagemSistemas.xhtml?faces-redirect=true"
+					ajax="false" />
+			</p:menuButton>
+		</p:toolbarGroup>
+		<p:toolbarGroup align="right">
+			<p:menuButton value="#{loginController.usuarioLogado.nome}">
+				<p:menuitem value="#{message['botao.alteraSenha']}"
+					outcome="/paginas/public/modificaSenha.xhtml?faces-redirect=true"
+					ajax="false" />
+				<p:menuitem value="#{message['botao.deslogar']}"
+					action="#{loginController.deslogar}" ajax="false" />
+			</p:menuButton>
+		</p:toolbarGroup>
+	</p:toolbar>
+</h:form>
+
+</html>

@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="content">
+	
+		<h:form id="cadastroForm">
+			<!-- Componente que mostra as mensagens lançadas na aplicação. -->
+			<p:messages autoUpdate="true" globalOnly="true" showDetail="true" showSummary="true" />
+		
+			<p:panel id="cadastroPanel" header="Cadastro de Dependencias">
+				<h:inputHidden id="idInpurHidden" value="#{sessionScope.dependencia.id}" />
+				<p:panelGrid id="cadastroPanelGrid">
+					<p:row>
+						<p:column>
+							<p:outputLabel id="nomeOutputLabel" value="#{message['rotulo.nome']}" for="nomeInputText" />
+						</p:column>
+						<p:column>
+							<p:inputText id="nomeInputText" value="#{sessionScope.dependencia.nome}" required="true" requiredMessage="#{message['mensagem.requerido']}" />
+							<p:watermark id="nomeWatermark" for="nomeInputText" value="#{message['marcadagua.campos']}" />
+						</p:column>
+						<p:column>
+							<p:message id="nomeMessage" for="nomeInputText" />
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+				
+				<p:separator />
+				
+				<p:dataTable id="sistemasDataTable" value="#{dependenciaController.sistemas}"
+					var="sistema" selection="#{sessionScope.dependencia.sistemas}" emptyMessage="Nenhum registro carregado." paginator="true" rows="5"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5, 10, 20, 30" >
+					
+					<f:facet name="header">#{message['titulo.tabelaSistema']}</f:facet>
+					
+					<p:column selectionMode="multiple" />
+					<p:column headerText="#{message['coluna.nome']}">
+						<h:inputHidden id="idInputHidden" value="#{sistema.id}" />
+						<h:outputText id="nomeOutputText" value="#{sistema.nome}" />
+					</p:column>
+					<p:column headerText="#{message['coluna.descricao']}" style="white-space:normal !important;max-width: 300px; min-width: 300px;">
+						<h:outputText id="descricaoOutputText" value="#{sistema.descricao}" style="word-wrap: break-word;" />
+					</p:column>
+					<p:column headerText="#{message['coluna.status']}">
+						<h:outputText id="statusOutputText" value="#{sistema.status}" />
+					</p:column>
+				</p:dataTable>
+				
+				<p:separator />
+				
+				<p:commandButton id="salvarCommandButton" action="#{dependenciaController.salvarDependencia}" value="#{message['botao.salvar']}" ajax="false">
+					<f:setPropertyActionListener target="#{dependenciaController.dependencia}" value="#{sessionScope.dependencia}" />
+				</p:commandButton>
+				<p:button id="cancelarButton" value="#{message['botao.cancelar']}" outcome="/paginas/private/listagens/listagemDependencia.xhtml?faces-redirect=true" />
+			</p:panel>
+		</h:form>
+		
+	</ui:define>
+</ui:composition>
+</html>

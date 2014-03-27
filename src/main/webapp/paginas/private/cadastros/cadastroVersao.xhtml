@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="cadastroForm">
+		
+			<!-- Componente que mostra as mensagens lançadas na aplicação. -->
+			<p:messages autoUpdate="true" globalOnly="true" showDetail="true" showSummary="true" />
+
+			<p:panel id="cadastroPanel" header="#{message['titulo.cadastroVersao']}">
+				<h:inputHidden id="idInputHidden" value="#{sessionScope.versao.id}" />
+				<p:panelGrid id="cadastroPanelGrid" columns="3">
+					<p:outputLabel id="nomeVersaoOutputLabel" value="#{message['rotulo.nome']}" for="nomeVersaoInputText" />
+					<p:inputText id="nomeVersaoInputText" value="#{sessionScope.versao.nome}" required="true" requiredMessage="#{message['mensagem.vazio']}" />
+					<p:message for="nomeBranchInputText" />
+				
+					<p:outputLabel id="nomeBranchOutputLabel" value="#{message['rotulo.branch']}" for="nomeBranchInputText" />
+					<p:inputText id="nomeBranchInputText" value="#{sessionScope.versao.nomeBranch}" required="true" requiredMessage="#{message['mensagem.vazio']}" />
+					<p:message for="nomeBranchInputText" />
+					
+					<p:outputLabel id="descricaoOutputLabel" value="#{message['rotulo.descricao']}" for="descricaoInputTextArea" />
+					<p:inputTextarea id="descricaoInputTextArea" value="#{sessionScope.versao.descricao}" autoResize="false" rows="6" required="true" requiredMessage="#{message['mensagem.vazio']}"/>
+					<p:message for="descricaoInputTextArea" />
+					
+					<p:outputLabel id="dataCricaoOutputLabel" value="#{message['rotulo.dataCriacao']}" for="dataCriacaoCalendar" />
+					<p:calendar id="dataCriacaoCalendar" value="#{sessionScope.versao.dataCriacao}" showOn="button" pattern="dd/MM/yyyy" required="true" requiredMessage="#{message['mensagem.vazio']}" />
+					<p:message for="dataCriacaoCalendar" />
+					
+					<p:outputLabel id="headOutputLabel" value="#{message['rotulo.head']}" for="headSelectBooleanCheckbox" />
+					<p:selectBooleanCheckbox id="headSelectBooleanCheckbox" value="#{sessionScope.versao.head}" />
+					<h:outputText value="" />
+					
+					<p:outputLabel id="producaoOutputLabel" value="#{message['rotulo.producao']}" for="producaoSelectBooleanCheckbox" />
+					<p:selectBooleanCheckbox id="producaoSelectBooleanCheckbox" value="#{sessionScope.versao.producao}" />
+					<h:outputText value="" />
+				</p:panelGrid>
+				
+				<p:separator />
+				
+				<p:commandButton id="salvarCommandButton" action="#{versaoController.salvarVersao}" value="#{message['botao.salvar']}" ajax="false">
+					<f:setPropertyActionListener target="#{versaoController.versao}" value="#{sessionScope.versao}" />
+					<f:setPropertyActionListener target="#{versaoController.versao.nomeAutor}" value="#{loginController.usuarioLogado.nome}" />
+				</p:commandButton>
+				<p:button id="cancelarButton" value="#{message['botao.cancelar']}" outcome="/paginas/private/listagens/listagemVersoes.xhtml?faces-redirect=true" />
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="listagemForm">
+			<p:dataTable id="sistemasDataTable"
+				value="#{sessionScope.dependencia.sistemas}" var="sistema"
+				emptyMessage="Nenhum registro carregado." paginator="true" rows="5"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5, 10, 20, 30" sortBy="#{sistema.nome}">
+
+				<f:facet name="header">#{message['titulo.tabelaSistemaDependencia']} #{sessionScope.dependencia.nome}</f:facet>
+
+				<p:column headerText="#{message['coluna.nome']}">
+					<h:inputHidden id="idInputHidden" value="#{sistema.id}" />
+					<h:outputText id="nomeOutputText" value="#{sistema.nome}" />
+				</p:column>
+				<p:column headerText="#{message['coluna.descricao']}"
+					style="white-space:normal !important;max-width: 300px; min-width: 300px;">
+					<h:outputText id="descricaoOutputText" value="#{sistema.descricao}"
+						style="word-wrap: break-word;" />
+				</p:column>
+				<p:column headerText="#{message['coluna.status']}">
+					<h:outputText id="statusOutputText" value="#{sistema.status}" />
+				</p:column>
+			</p:dataTable>
+
+			<p:separator />
+
+			<p:button value="#{message['botao.voltar']}"
+				outcome="/paginas/private/listagens/listagemDependencia.xhtml?faces-redirect=true" />
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

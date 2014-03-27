@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="listagemForm">
+
+			<!-- Componente que mostra as mensagens lançadas na aplicação. -->
+			<p:messages autoUpdate="true" globalOnly="true" showDetail="true"
+				showSummary="true" />
+
+			<!-- Componente que mostra as dependencias cadastradas no sistemas. -->
+			<p:dataTable id="dependenciaDataTable" var="dependencia"
+				value="#{dependenciaController.dependencias}"
+				rowKey="#{dependencia.nome}"
+				emptyMessage="#{message['mensagem.vazio']}" paginator="true"
+				rows="5"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5, 10, 20, 30"
+				selection="#{dependenciaController.dependencia}"
+				sortBy="#{dependencia.nome}">
+
+				<f:facet name="header">#{message['titulo.tabelaDependencia']}</f:facet>
+
+				<p:column selectionMode="single">
+					<h:inputHidden id="idInputHidden" value="#{dependencia.id}" />
+				</p:column>
+				<p:column headerText="#{message['coluna.nome']}">
+					<h:outputText id="nomeOutputText" value="#{dependencia.nome}" />
+				</p:column>
+
+				<f:facet name="footer">
+					<p:commandButton
+						rendered="#{(loginController.usuarioLogado.lider eq true) or (loginController.usuarioLogado.analistaManter eq true)}"
+						id="deletarCommandButton" value="#{message['botao.deletar']}"
+						actionListener="#{dependenciaController.deletarDependencia}"
+						ajax="true" update="@all" />
+					<p:commandButton
+						rendered="#{(loginController.usuarioLogado.lider eq true) or (loginController.usuarioLogado.analistaManter eq true)}"
+						id="editarCommandButton"
+						action="#{dependenciaController.editarDependenciaSelecionada}"
+						value="#{message['botao.editar']}" ajax="false" />
+					<p:commandButton id="sistemasCommandButton"
+						action="#{dependenciaController.listarSistemasRelacionados}"
+						value="#{message['botao.listarSistemas']}" ajax="false" />
+				</f:facet>
+			</p:dataTable>
+
+			<p:separator />
+
+			<p:commandButton
+				rendered="#{(loginController.usuarioLogado.lider eq true) or (loginController.usuarioLogado.analistaManter eq true)}"
+				id="cadastrarCommandButton"
+				action="#{dependenciaController.cadastrarDependencia}"
+				value="#{message['botao.novo']}" ajax="false" />
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

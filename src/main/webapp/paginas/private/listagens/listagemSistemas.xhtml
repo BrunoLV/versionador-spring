@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<!-- 
+Tela de listagem de Sistemas.
+ -->
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="listagemForm">
+
+			<!-- Componente que mostra as mensagens lançadas na aplicação. -->
+			<p:messages id="mensagemMessages" globalOnly="true" showDetail="true"
+				showSummary="true" />
+
+			<!-- DataTable que mostra os sistemas cadastrados no sistema. -->
+			<p:dataTable id="sistemasDataTable" var="sistema"
+				rowKey="#{sistema.nome}" value="#{sistemaController.sistemas}"
+				emptyMessage="#{message['mensagem.vazio']}" paginator="true"
+				rows="5"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5, 10, 20, 30"
+				selection="#{sistemaController.sistema}" sortBy="#{sistema.nome}">
+
+				<f:facet name="header">#{message['titulo.tabelaSistema']}</f:facet>
+
+				<p:column selectionMode="single">
+					<h:inputHidden id="idInputHidden" value="#{sistema.id}" />
+				</p:column>
+
+				<p:column headerText="#{message['coluna.nome']}">
+					<h:outputText id="nomeOutputText" value="#{sistema.nome}" />
+				</p:column>
+				<p:column headerText="#{message['coluna.descricao']}"
+					resizable="false"
+					style="white-space:normal !important;max-width: 300px; min-width: 300px;">
+					<h:outputText id="descricaoOutputText" value="#{sistema.descricao}"
+						style="word-wrap: break-word;" />
+				</p:column>
+				<p:column headerText="#{message['coluna.status']}">
+					<h:outputText id="statusOutputText" value="#{sistema.status}" />
+				</p:column>
+				<f:facet name="footer">
+					<p:commandButton
+						rendered="#{(loginController.usuarioLogado.lider eq true) or (loginController.usuarioLogado.analistaManter eq true)}"
+						id="deletarCommandButton" value="#{message['botao.deletar']}"
+						actionListener="#{sistemaController.deletarSistema}" ajax="true"
+						update="@all" />
+					<p:commandButton
+						rendered="#{(loginController.usuarioLogado.lider eq true) or (loginController.usuarioLogado.analistaManter eq true)}"
+						id="editarCommandButton"
+						action="#{sistemaController.editarSistemaSelecionado}"
+						value="#{message['botao.editar']}" ajax="false" />
+					<p:commandButton id="versoesCommandButton"
+						action="#{sistemaController.listarVersoes}"
+						value="#{message['botao.listarVersao']}" ajax="false" />
+				</f:facet>
+			</p:dataTable>
+
+			<p:separator />
+
+			<!-- Command button utilizado para direcionar a aplicação para a tela de cadastro de sistemas -->
+			<p:commandButton
+				rendered="#{(loginController.usuarioLogado.lider eq true) or (loginController.usuarioLogado.analistaManter eq true)}"
+				id="cadastrarCommandButton"
+				action="#{sistemaController.cadastrarSistema}"
+				value="#{message['botao.novo']}" ajax="false" />
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,9 @@
+com.porto.amazonas.versionamento.aspects
+com.porto.amazonas.versionamento.componentes.seguranca
+com.porto.amazonas.versionamento.dao
+com.porto.amazonas.versionamento.dao.impl
+com.porto.amazonas.versionamento.exceptions
+com.porto.amazonas.versionamento.model
+com.porto.amazonas.versionamento.service
+com.porto.amazonas.versionamento.service.impl
+com.porto.amazonas.versionamento.web.controller
