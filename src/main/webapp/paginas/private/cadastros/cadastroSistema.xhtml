@@ -1,51 +1,59 @@
-<?xml version='1.0' encoding='ISO-8859-1' ?> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns="http://www.w3.org/1999/xhtml">
 
 <!-- 
 Tela de cadastro de sistemas.
  -->
 <ui:composition template="/template/template.xhtml">
-	<ui:define name="content">
+    <ui:define name="content">
 
-		<h:form id="cadastroForm">
-		
-			<!-- Componente que mostra as mensagens lançadas na aplicação. -->
-			<p:messages autoUpdate="true" globalOnly="true" showDetail="true" showSummary="true" />
-			
-			<p:panel id="cadastroPanel" header="#{message['titulo.cadastroSistema']}">
-				<h:inputHidden id="idInputHidden" value="#{sessionScope.sistema.id}" />
-				<p:panelGrid id="cadastroPanelGrid" columns="3">
-					<p:outputLabel id="nomeOutputLabel" value="#{message['rotulo.nome']}" for="nomeInputText" />
-					<p:inputText id="nomeInputText" value="#{sessionScope.sistema.nome}" required="true" requiredMessage="#{message['mensagem.requerido']}" />
-					<p:message id="nomeMessage" for="nomeInputText" />
-					
-					<p:outputLabel id="descricaoOutputLabel" value="#{message['rotulo.descricao']}" for="descricaoInputTextArea" />
-					<p:inputTextarea id="descricaoInputTextArea" value="#{sessionScope.sistema.descricao}" autoResize="false" rows="6" required="true" requiredMessage="#{message['mensagem.requerido']}" />
-					<p:message id="descricaoMessage" for="descricaoInputTextArea" />
-					
-					<p:outputLabel id="statusLabel" value="#{message['rotulo.status']}" for="statusSelectOneMenu"  />
-					<p:selectOneMenu id="statusSelectOneMenu" value="#{sessionScope.sistema.status}" required="true" requiredMessage="#{message['mensagem.requerido']}">
-						<f:selectItem id="selecioneSelectItem" itemLabel="#{message['rotulo.selecione']}" noSelectionOption="true" />
-						<f:selectItems id="statusSelectItems" value="#{sistemaController.enumStatus}" />
-					</p:selectOneMenu>
-					<p:message id="statusMessage" for="statusSelectOneMenu" />
-				</p:panelGrid>
-				
-				<p:separator />
-				
-				<p:commandButton id="salvarCommandButton" action="#{sistemaController.salvarSistema}" value="#{message['botao.salvar']}" ajax="false">
-					<f:setPropertyActionListener target="#{sistemaController.sistema}" value="#{sessionScope.sistema}" />
-				</p:commandButton>
-				<p:button id="cancelarButton" value="#{message['botao.cancelar']}" outcome="/paginas/private/listagens/listagemSistemas.xhtml?faces-redirect=true" />
-			</p:panel>
-		</h:form>
+        <h:form id="cadastroForm">
 
-	</ui:define>
+            <!-- Componente que mostra as mensagens lançadas na aplicação. -->
+            <p:messages autoUpdate="true" globalOnly="true" showDetail="true" showSummary="true"/>
+
+            <p:panel id="cadastroPanel" header="#{message['titulo.cadastroSistema']}">
+                <h:inputHidden id="idInputHidden" value="#{sessionScope.sistema.id}"/>
+                <p:panelGrid id="cadastroPanelGrid" columns="3">
+                    <p:outputLabel id="nomeOutputLabel" value="#{message['rotulo.nome']}" for="nomeInputText"/>
+                    <p:inputText id="nomeInputText" value="#{sessionScope.sistema.nome}" required="true"
+                                 requiredMessage="#{message['mensagem.requerido']}"/>
+                    <p:message id="nomeMessage" for="nomeInputText"/>
+
+                    <p:outputLabel id="descricaoOutputLabel" value="#{message['rotulo.descricao']}"
+                                   for="descricaoInputTextArea"/>
+                    <p:inputTextarea id="descricaoInputTextArea" value="#{sessionScope.sistema.descricao}"
+                                     autoResize="false" rows="6" required="true"
+                                     requiredMessage="#{message['mensagem.requerido']}"/>
+                    <p:message id="descricaoMessage" for="descricaoInputTextArea"/>
+
+                    <p:outputLabel id="statusLabel" value="#{message['rotulo.status']}" for="statusSelectOneMenu"/>
+                    <p:selectOneMenu id="statusSelectOneMenu" value="#{sessionScope.sistema.status}" required="true"
+                                     requiredMessage="#{message['mensagem.requerido']}">
+                        <f:selectItem id="selecioneSelectItem" itemLabel="#{message['rotulo.selecione']}"
+                                      noSelectionOption="true"/>
+                        <f:selectItems id="statusSelectItems" value="#{sistemaController.enumStatus}"/>
+                    </p:selectOneMenu>
+                    <p:message id="statusMessage" for="statusSelectOneMenu"/>
+                </p:panelGrid>
+
+                <p:separator/>
+
+                <p:commandButton id="salvarCommandButton" action="#{sistemaController.salvarSistema}"
+                                 value="#{message['botao.salvar']}" ajax="false">
+                    <f:setPropertyActionListener target="#{sistemaController.sistema}" value="#{sessionScope.sistema}"/>
+                </p:commandButton>
+                <p:button id="cancelarButton" value="#{message['botao.cancelar']}"
+                          outcome="/paginas/private/listagens/listagemSistemas.xhtml?faces-redirect=true"/>
+            </p:panel>
+        </h:form>
+
+    </ui:define>
 </ui:composition>
 </html>

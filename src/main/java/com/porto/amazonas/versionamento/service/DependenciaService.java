@@ -1,32 +1,35 @@
 package com.porto.amazonas.versionamento.service;
 
-import java.util.List;
-
 import com.porto.amazonas.versionamento.exceptions.VersionamentoException;
 import com.porto.amazonas.versionamento.model.Dependencia;
 import com.porto.amazonas.versionamento.model.Sistema;
 
+import java.util.List;
+
 /**
- * Interface que define o comportamento da classe de negócio para operações 
+ * Interface que define o comportamento da classe de negï¿½cio para operaï¿½ï¿½es
  * com a Entidade Dependencia.
+ *
  * @author BRUNO VIANA
  */
 public interface DependenciaService extends BaseService<Dependencia> {
-	
-	/**
-	 * Método utilizado para listar todas as dependencias de um sistema.
-	 * @param sistema que será utilizado como parametro.
-	 * @return lista com as dependencias encontradas.
-	 * @throws VersionamentoException para qualquer erro que ocorra durante a execução do método.
-	 */
-	List<Dependencia> listarDependenciasDeUmSistema(Sistema sistema) throws VersionamentoException;
-	
-	/**
-	 * Método utilizado para listar os sistemas relacionados a uma dependencia.
-	 * @param dependencia que será utilizada como parametro.
-	 * @return lista de dependencias encontradas.
-	 * @throws VersionamentoException para qualquer erro que ocorra durante a execução do método.
-	 */
-	List<Sistema> listarSistemasRelacionadosAUmaDependencia(Dependencia dependencia) throws VersionamentoException;
+
+    /**
+     * Mï¿½todo utilizado para listar todas as dependencias de um sistema.
+     *
+     * @param sistema que serï¿½ utilizado como parametro.
+     * @return lista com as dependencias encontradas.
+     * @throws VersionamentoException para qualquer erro que ocorra durante a execuï¿½ï¿½o do mï¿½todo.
+     */
+    List<Dependencia> listarDependenciasDeUmSistema(Sistema sistema) throws VersionamentoException;
+
+    /**
+     * Mï¿½todo utilizado para listar os sistemas relacionados a uma dependencia.
+     *
+     * @param dependencia que serï¿½ utilizada como parametro.
+     * @return lista de dependencias encontradas.
+     * @throws VersionamentoException para qualquer erro que ocorra durante a execuï¿½ï¿½o do mï¿½todo.
+     */
+    List<Sistema> listarSistemasRelacionadosAUmaDependencia(Dependencia dependencia) throws VersionamentoException;
 
 } // fim da interface DependenciaService

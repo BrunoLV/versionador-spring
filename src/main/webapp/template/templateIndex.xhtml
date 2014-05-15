@@ -1,43 +1,46 @@
 <?xml version='1.0' encoding='ISO-8859-1' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns="http://www.w3.org/1999/xhtml">
 
 <h:head>
-	<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
-	<style> 
-		.ui-widget, 
-		.ui-widget .ui-widget { 
-		font-size: 11px !important; 
-		} 
-	</style>
-	<title><ui:insert name="title"><h:outputText value="#{message['mensagem.titulo']}"/></ui:insert></title>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1"/>
+    <style>
+        .ui-widget,
+        .ui-widget .ui-widget {
+            font-size: 11px !important;
+        }
+    </style>
+    <title>
+        <ui:insert name="title">
+            <h:outputText value="#{message['mensagem.titulo']}"/>
+        </ui:insert>
+    </title>
 </h:head>
 
 <body>
 
-	<p:layout fullPage="true">
-		<p:layoutUnit position="north" size="120" resizable="false" closable="false" collapsible="false">
-			<ui:insert name="header">
-				<ui:include src="header.xhtml" />
-			</ui:insert>
-		</p:layoutUnit>
-		<p:layoutUnit position="west" size="100" resizable="false" closable="false" collapsible="false" />
-		<p:layoutUnit position="center" resizable="false" closable="false" collapsible="false">
-			<ui:insert name="content">
-			</ui:insert>
-		</p:layoutUnit>
-		<p:layoutUnit position="east" size="100" resizable="false" closable="false" collapsible="false" />
-		<p:layoutUnit position="south" size="50" resizable="false" closable="false" collapsible="false">
-			<ui:insert name="footer">
-				<ui:include src="footer.xhtml" />
-			</ui:insert>
-		</p:layoutUnit>
-	</p:layout>
+<p:layout fullPage="true">
+    <p:layoutUnit position="north" size="120" resizable="false" closable="false" collapsible="false">
+        <ui:insert name="header">
+            <ui:include src="header.xhtml"/>
+        </ui:insert>
+    </p:layoutUnit>
+    <p:layoutUnit position="west" size="100" resizable="false" closable="false" collapsible="false"/>
+    <p:layoutUnit position="center" resizable="false" closable="false" collapsible="false">
+        <ui:insert name="content">
+        </ui:insert>
+    </p:layoutUnit>
+    <p:layoutUnit position="east" size="100" resizable="false" closable="false" collapsible="false"/>
+    <p:layoutUnit position="south" size="50" resizable="false" closable="false" collapsible="false">
+        <ui:insert name="footer">
+            <ui:include src="footer.xhtml"/>
+        </ui:insert>
+    </p:layoutUnit>
+</p:layout>
 
 </body>
 

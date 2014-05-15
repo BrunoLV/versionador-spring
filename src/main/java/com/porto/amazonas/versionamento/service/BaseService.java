@@ -1,53 +1,59 @@
 package com.porto.amazonas.versionamento.service;
 
-import java.util.List;
-
 import com.porto.amazonas.versionamento.exceptions.VersionamentoException;
 
+import java.util.List;
+
 /**
- * Interface base para os classes Service da aplicação. Ela define as operações
- * CRUD que todas as classes service da aplicação possuem. 
- * @author BRUNO VIANA
+ * Interface base para os classes Service da aplicacao. Ela define as operacoes
+ * CRUD que todas as classes service da aplicacao possuem.
+ *
  * @param <T>
+ * @author BRUNO VIANA
  */
 public interface BaseService<T> {
 
-	/**
-	 * Método definido para a ação de gravar um objeto na aplicação.
-	 * @param t objeto que será gravado na aplicaÃ§Ã£o.
-	 * @throws VersionamentoException exceção que encapsula todas as outras exceptions lançadas na execução do método.
-	 */
-	void salvar(T t) throws VersionamentoException;
+    /**
+     * Metodo definido para a acao de gravar um objeto na aplicacao.
+     *
+     * @param t objeto que sera gravado na aplicaÃ§Ã£o.
+     * @throws VersionamentoException excecao que encapsula todas as outras exceptions lancadas na execucao do Metodo.
+     */
+    void salvar(T t) throws VersionamentoException;
 
-	/**
-	 * Método definido para a ação de editar um objeto na aplicação.
-	 * @param t objeto que será gravado na aplicação.
-	 * @throws VersionamentoException exceção que encapsula todas as outras exceptions lançadas na execução do método.
-	 */
-	void editar(T t) throws VersionamentoException;
+    /**
+     * Metodo definido para a acao de editar um objeto na aplicacao.
+     *
+     * @param t objeto que sera gravado na aplicacao.
+     * @throws VersionamentoException excecao que encapsula todas as outras exceptions lancadas na execucao do Metodo.
+     */
+    void editar(T t) throws VersionamentoException;
 
-	/**
-	 * MÃ©todo definido para a aÃ§Ã£o de deletar um objeto na aplicaÃ§Ã£o.
-	 * @param t objeto que serÃ¡ gravado na aplicaÃ§Ã£o.
-	 * @throws VersionamentoException exceÃ§Ã£o que encapsula todas as outras exceptions lanÃ§adas na execuÃ§Ã£o do mÃ©todo.
-	 */
-	void deletar(T t) throws VersionamentoException;
+    /**
+     * MÃ©todo definido para a aÃ§Ã£o de deletar um objeto na aplicaÃ§Ã£o.
+     *
+     * @param t objeto que serÃ¡ gravado na aplicaÃ§Ã£o.
+     * @throws VersionamentoException exceÃ§Ã£o que encapsula todas as outras exceptions lanÃ§adas na execuÃ§Ã£o do mÃ©todo.
+     */
+    void deletar(T t) throws VersionamentoException;
 
-	/**
-	 * Método definido para a ação de buscar um objeto na aplicação utilizando
-	 * seu id.
-	 * @param id do objeto a ser consultado na aplicação.
-	 * @return objeto resultado da pesquisa.
-	 * @throws VersionamentoException exceção que encapsula todas as outras exceptions lançadas na execução do método.
-	 */
-	T buscarPorId(Integer id) throws VersionamentoException;
+    /**
+     * Metodo definido para a acao de buscar um objeto na aplicacao utilizando
+     * seu id.
+     *
+     * @param id do objeto a ser consultado na aplicacao.
+     * @return objeto resultado da pesquisa.
+     * @throws VersionamentoException excecao que encapsula todas as outras exceptions lancadas na execucao do Metodo.
+     */
+    T buscarPorId(Integer id) throws VersionamentoException;
 
-	/**
-	 * Método definido para a ação de buscar uma lista com todos os objetos
-	 * gravados na aplicação.
-	 * @return lista com todos os resultados da consulta.
-	 * @throws VersionamentoException exceção que encapsula todas as outras exceptions lançadas na execução do método.
-	 */
-	List<T> listarTodos() throws VersionamentoException;
+    /**
+     * Metodo definido para a acao de buscar uma lista com todos os objetos
+     * gravados na aplicacao.
+     *
+     * @return lista com todos os resultados da consulta.
+     * @throws VersionamentoException excecao que encapsula todas as outras exceptions lancadas na execucao do Metodo.
+     */
+    List<T> listarTodos() throws VersionamentoException;
 
 } // fim da interface BaseService

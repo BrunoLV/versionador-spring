@@ -1,29 +1,32 @@
 package com.porto.amazonas.versionamento.dao;
 
-import java.util.List;
-
 import com.porto.amazonas.versionamento.model.Dependencia;
 import com.porto.amazonas.versionamento.model.Sistema;
+
+import java.util.List;
 
 /**
  * Interface que determina o comportamento do DAO que trata das operaÃ§Ãµes no
  * banco de dados para a entidade Dependencia.
+ *
  * @author BRUNO VIANA
  */
 public interface DependenciaDao extends BaseDao<Dependencia> {
 
-	/**
-	 * Método utilizado para consultar todas as dependencias utilizando um sistema como paramentro de consulta.
-	 * @param sistema que será utilizado como parametro.
-	 * @return lista com as dependencias encontradas.
-	 */
-	List<Dependencia> listarDependenciasDeUmSistema(Sistema sistema);
-	
-	/**
-	 * Método utilizado para consultar uma dependencia trazendo seus seus relacionamentos.
-	 * @param dependencia que será consultada.
-	 * @return dependencia resultante da consulta.
-	 */
-	Dependencia buscarDependenciaComSistemasRelacionados(Dependencia dependencia);
+    /**
+     * Mï¿½todo utilizado para consultar todas as dependencias utilizando um sistema como paramentro de consulta.
+     *
+     * @param sistema que serï¿½ utilizado como parametro.
+     * @return lista com as dependencias encontradas.
+     */
+    List<Dependencia> listarDependenciasDeUmSistema(Sistema sistema);
+
+    /**
+     * Mï¿½todo utilizado para consultar uma dependencia trazendo seus seus relacionamentos.
+     *
+     * @param dependencia que serï¿½ consultada.
+     * @return dependencia resultante da consulta.
+     */
+    Dependencia buscarDependenciaComSistemasRelacionados(Dependencia dependencia);
 
 } // fim da interface DependenciaDao

@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:beans="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:security="http://www.springframework.org/schema/security"
-	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:beans="http://www.springframework.org/schema/beans"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<beans:import resource="applicationDBContext.xml" />
-	
-	<security:global-method-security secured-annotations="enabled" jsr250-annotations="enabled" />
+    <beans:import resource="applicationDBContext.xml"/>
 
-	<security:http auto-config="true" use-expressions="true">
-		<security:intercept-url pattern="/paginas/public/**" access="permitAll" />
-		<security:intercept-url pattern="/paginas/private/listagens/**" access="isAuthenticated()"/>
-		<security:intercept-url pattern="/paginas/private/cadastros/**" access="hasAnyRole('ROLE_MANTER', 'ROLE_LIDER')"/>
-		<security:intercept-url pattern="/paginas/private/gestao/**" access="hasRole('ROLE_LIDER')"/>
-		<security:access-denied-handler error-page="/paginas/public/acessoNegado.xhtml"/>
+    <security:global-method-security secured-annotations="enabled" jsr250-annotations="enabled"/>
 
-		<security:form-login login-page="/paginas/public/login.xhtml"
-			login-processing-url="/j_spring_security_check" default-target-url="/paginas/public/index.xhtml" />
-		<security:logout logout-success-url="/paginas/public/index.xhtml"/>
-	</security:http>
+    <security:http auto-config="true" use-expressions="true">
+        <security:intercept-url pattern="/paginas/public/**" access="permitAll"/>
+        <security:intercept-url pattern="/paginas/private/listagens/**" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/paginas/private/cadastros/**"
+                                access="hasAnyRole('ROLE_MANTER', 'ROLE_LIDER')"/>
+        <security:intercept-url pattern="/paginas/private/gestao/**" access="hasRole('ROLE_LIDER')"/>
+        <security:access-denied-handler error-page="/paginas/public/acessoNegado.xhtml"/>
 
-	<security:authentication-manager alias="authenticationManager">
-		<security:authentication-provider user-service-ref="validadorUsuario" />
-	</security:authentication-manager>
+        <security:form-login login-page="/paginas/public/login.xhtml"
+                             login-processing-url="/j_spring_security_check"
+                             default-target-url="/paginas/public/index.xhtml"/>
+        <security:logout logout-success-url="/paginas/public/index.xhtml"/>
+    </security:http>
+
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider user-service-ref="validadorUsuario"/>
+    </security:authentication-manager>
 
 </beans>

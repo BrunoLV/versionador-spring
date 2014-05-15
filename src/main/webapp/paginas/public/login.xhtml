@@ -1,37 +1,41 @@
-<?xml version='1.0' encoding='ISO-8859-1' ?> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns="http://www.w3.org/1999/xhtml">
 
 <ui:composition template="/template/templateIndex.xhtml">
-	<ui:define name="content">
+    <ui:define name="content">
 
-		<h:form id="loginForm">
-					
-			<p:panel id="loginPanel" header="#{message['titulo.painelLogin']}">
-				<p:panelGrid id="loginPanelGrid" columns="3">				
-					<h:outputLabel id="matriculaOutputLabel" value="#{message['rotulo.matricula']}" for="matriculaInputText" />
-					<p:inputText id="matriculaInputText" value="#{loginController.matricula}" required="true" requiredMessage="#{message['mensagem.requerido']}" />
-					<p:message for="matriculaInputText" />
+        <h:form id="loginForm">
 
-					<h:outputLabel id="senhaOutputLabel" value="#{message['rotulo.senha']}" for="senhaPassword" />
-					<p:password id="senhaPassword" value="#{loginController.senha}" required="true" requiredMessage="#{message['mensagem.requerido']}" />
-					<p:message for="senhaPassword" />
-				</p:panelGrid>
-				
-				<p:separator />
-				
-				<p:commandButton id="loginCommandButton" action="#{loginController.logar}" ajax="false" value="#{message['botao.logar']}" />
-			</p:panel>
-			<br/>
-			#{message['novo.texto1']}<br />
-			#{message['novo.texto2']} <h:link value="#{message['intro.texto3']}" outcome="/paginas/public/cadastroInicial.xhtml" />
-		</h:form>
+            <p:panel id="loginPanel" header="#{message['titulo.painelLogin']}">
+                <p:panelGrid id="loginPanelGrid" columns="3">
+                    <h:outputLabel id="matriculaOutputLabel" value="#{message['rotulo.matricula']}"
+                                   for="matriculaInputText"/>
+                    <p:inputText id="matriculaInputText" value="#{loginController.matricula}" required="true"
+                                 requiredMessage="#{message['mensagem.requerido']}"/>
+                    <p:message for="matriculaInputText"/>
 
-	</ui:define>
+                    <h:outputLabel id="senhaOutputLabel" value="#{message['rotulo.senha']}" for="senhaPassword"/>
+                    <p:password id="senhaPassword" value="#{loginController.senha}" required="true"
+                                requiredMessage="#{message['mensagem.requerido']}"/>
+                    <p:message for="senhaPassword"/>
+                </p:panelGrid>
+
+                <p:separator/>
+
+                <p:commandButton id="loginCommandButton" action="#{loginController.logar}" ajax="false"
+                                 value="#{message['botao.logar']}"/>
+            </p:panel>
+            <br/>
+            #{message['novo.texto1']}<br/>
+            #{message['novo.texto2']}
+            <h:link value="#{message['intro.texto3']}" outcome="/paginas/public/cadastroInicial.xhtml"/>
+        </h:form>
+
+    </ui:define>
 </ui:composition>
 </html>

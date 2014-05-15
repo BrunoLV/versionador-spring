@@ -1,96 +1,96 @@
 <?xml version='1.0' encoding='ISO-8859-1' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns="http://www.w3.org/1999/xhtml">
 
 <!-- 
 Tela de listagem de versões.
  -->
 <ui:composition template="/template/template.xhtml">
 
-	<ui:define name="content">
-		<h:form id="listagemForm">
+    <ui:define name="content">
+        <h:form id="listagemForm">
 
-			<!-- Componente que mostra as mensagens lançadas na aplicação. -->
-			<p:messages id="mensagemMessages" autoUpdate="true" globalOnly="true"
-				showDetail="true" showSummary="true" />
+            <!-- Componente que mostra as mensagens lançadas na aplicação. -->
+            <p:messages id="mensagemMessages" autoUpdate="true" globalOnly="true"
+                        showDetail="true" showSummary="true"/>
 
-			<!-- Componente que mostra as versões cadastradas no sistemas. -->
-			<p:dataTable id="versoesDataTable"
-				value="#{versaoController.versoes}" var="versao"
-				rowKey="#{versao.nome}" emptyMessage="#{message['mensagem.vazio']}"
-				paginator="true" rows="5"
-				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5, 10, 20, 30"
-				selection="#{versaoController.versao}" sortBy="#{versao.nome}">
+            <!-- Componente que mostra as versões cadastradas no sistemas. -->
+            <p:dataTable id="versoesDataTable"
+                         value="#{versaoController.versoes}" var="versao"
+                         rowKey="#{versao.nome}" emptyMessage="#{message['mensagem.vazio']}"
+                         paginator="true" rows="5"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5, 10, 20, 30"
+                         selection="#{versaoController.versao}" sortBy="#{versao.nome}">
 
-				<f:facet name="header">#{message['titulo.tabelaVersao']}</f:facet>
+                <f:facet name="header">#{message['titulo.tabelaVersao']}</f:facet>
 
-				<p:column selectionMode="single">
-					<h:inputHidden id="idInputHidden" value="#{versao.id}" />
-				</p:column>
-				<p:column headerText="#{message['coluna.nome']}">
-					<h:outputText id="nomeVersaoOutputText" value="#{versao.nome}" />
-				</p:column>
-				<p:column headerText="#{message['coluna.branch']}">
-					<h:outputText id="nomeBranchOutputText"
-						value="#{versao.nomeBranch}" />
-				</p:column>
-				<p:column headerText="#{message['coluna.descricao']}"
-					style="white-space:normal !important; max-width: 200px; min-width: 200px;">
-					<h:outputText id="descricaoOutputText" value="#{versao.descricao}"
-						style="word-wrap: break-word;" />
-				</p:column>
-				<p:column headerText="#{message['coluna.dataCriacao']}">
-					<h:outputText id="dataCriacaoOutputText"
-						value="#{versao.dataCriacao}">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
-					</h:outputText>
-				</p:column>
-				<p:column headerText="#{message['coluna.autor']}">
-					<h:outputText id="autorOutputText" value="#{versao.nomeAutor}" />
-				</p:column>
-				<p:column headerText="#{message['coluna.head']}">
-					<h:outputText id="headOutputText" value="#{versao.head}">
-						<f:converter converterId="statusVersaoConverter" />
-					</h:outputText>
-				</p:column>
-				<p:column headerText="#{message['coluna.producao']}">
-					<h:outputText id="producaoOutputText" value="#{versao.producao}">
-						<f:converter converterId="statusVersaoConverter" />
-					</h:outputText>
-				</p:column>
+                <p:column selectionMode="single">
+                    <h:inputHidden id="idInputHidden" value="#{versao.id}"/>
+                </p:column>
+                <p:column headerText="#{message['coluna.nome']}">
+                    <h:outputText id="nomeVersaoOutputText" value="#{versao.nome}"/>
+                </p:column>
+                <p:column headerText="#{message['coluna.branch']}">
+                    <h:outputText id="nomeBranchOutputText"
+                                  value="#{versao.nomeBranch}"/>
+                </p:column>
+                <p:column headerText="#{message['coluna.descricao']}"
+                          style="white-space:normal !important; max-width: 200px; min-width: 200px;">
+                    <h:outputText id="descricaoOutputText" value="#{versao.descricao}"
+                                  style="word-wrap: break-word;"/>
+                </p:column>
+                <p:column headerText="#{message['coluna.dataCriacao']}">
+                    <h:outputText id="dataCriacaoOutputText"
+                                  value="#{versao.dataCriacao}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="#{message['coluna.autor']}">
+                    <h:outputText id="autorOutputText" value="#{versao.nomeAutor}"/>
+                </p:column>
+                <p:column headerText="#{message['coluna.head']}">
+                    <h:outputText id="headOutputText" value="#{versao.head}">
+                        <f:converter converterId="statusVersaoConverter"/>
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="#{message['coluna.producao']}">
+                    <h:outputText id="producaoOutputText" value="#{versao.producao}">
+                        <f:converter converterId="statusVersaoConverter"/>
+                    </h:outputText>
+                </p:column>
 
-				<f:facet name="footer">
-					<p:commandButton
-						rendered="#{(loginController.usuarioLogado.lider eq true) or (loginController.usuarioLogado.analistaManter eq true)}"
-						id="deletarCommandButton" value="#{message['botao.deletar']}"
-						actionListener="#{versaoController.deletarVersao}" ajax="true"
-						update="@all" />
-					<p:commandButton
-						rendered="#{(loginController.usuarioLogado.lider eq true) or (loginController.usuarioLogado.analistaManter eq true)}"
-						id="editarCommandButton"
-						action="#{versaoController.editarVersaoSelecionada}"
-						value="#{message['botao.editar']}" ajax="false" />
-				</f:facet>
-			</p:dataTable>
+                <f:facet name="footer">
+                    <p:commandButton
+                            rendered="#{(loginController.usuarioLogado.lider eq true) or (loginController.usuarioLogado.analistaManter eq true)}"
+                            id="deletarCommandButton" value="#{message['botao.deletar']}"
+                            actionListener="#{versaoController.deletarVersao}" ajax="true"
+                            update="@all"/>
+                    <p:commandButton
+                            rendered="#{(loginController.usuarioLogado.lider eq true) or (loginController.usuarioLogado.analistaManter eq true)}"
+                            id="editarCommandButton"
+                            action="#{versaoController.editarVersaoSelecionada}"
+                            value="#{message['botao.editar']}" ajax="false"/>
+                </f:facet>
+            </p:dataTable>
 
-			<p:separator />
+            <p:separator/>
 
-			<p:commandButton
-				rendered="#{(loginController.usuarioLogado.lider eq true) or (loginController.usuarioLogado.analistaManter eq true)}"
-				id="cadastrarCommandButton"
-				action="#{versaoController.cadastrarVersao}"
-				value="#{message['botao.novo']}" ajax="false" />
-			<p:button id="sistemasButton"
-				outcome="/paginas/private/listagens/listagemSistemas.xhtml?faces-redirect=true"
-				value="#{message['botao.voltarSistemas']}" />
+            <p:commandButton
+                    rendered="#{(loginController.usuarioLogado.lider eq true) or (loginController.usuarioLogado.analistaManter eq true)}"
+                    id="cadastrarCommandButton"
+                    action="#{versaoController.cadastrarVersao}"
+                    value="#{message['botao.novo']}" ajax="false"/>
+            <p:button id="sistemasButton"
+                      outcome="/paginas/private/listagens/listagemSistemas.xhtml?faces-redirect=true"
+                      value="#{message['botao.voltarSistemas']}"/>
 
-		</h:form>
-	</ui:define>
+        </h:form>
+    </ui:define>
 </ui:composition>
 </html>

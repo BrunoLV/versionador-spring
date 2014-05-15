@@ -1,176 +1,167 @@
 package com.porto.amazonas.versionamento.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 /**
- * Classe que representa a entidade Versao dentro da aplicação.
+ * Classe que representa a entidade Versao dentro da aplicacao.
+ *
  * @author BRUNO VIANA
  */
 @Entity
 @Table(name = "tb_versao")
 public class Versao implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id_versao")
-	private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_versao")
+    private Integer id;
 
-	@Column(name = "nome_versao", length = 50, nullable = false)
-	private String nome;
-	
-	@Column(name = "nome_branch", length = 50, nullable = false)
-	private String nomeBranch;
+    @Column(name = "nome_versao", length = 50, nullable = false)
+    private String nome;
 
-	@Column(name = "descricao_versao", length = 255, nullable = false)
-	private String descricao;
+    @Column(name = "nome_branch", length = 50, nullable = false)
+    private String nomeBranch;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "data_criacao", nullable = false)
-	private Date dataCriacao;
+    @Column(name = "descricao_versao", length = 255, nullable = false)
+    private String descricao;
 
-	@Column(name = "nome_autor", length = 50, nullable = false)
-	private String nomeAutor;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "data_criacao", nullable = false)
+    private Date dataCriacao;
 
-	@Column(name = "flag_producao", nullable = false)
-	private Boolean producao;
+    @Column(name = "nome_autor", length = 50, nullable = false)
+    private String nomeAutor;
 
-	@Column(name = "flag_head", nullable = false)
-	private Boolean head;
+    @Column(name = "flag_producao", nullable = false)
+    private Boolean producao;
 
-	@ManyToOne
-	@JoinColumn(name = "id_sistema", nullable = false)
-	private Sistema sistema;
+    @Column(name = "flag_head", nullable = false)
+    private Boolean head;
 
-	public Versao() {
-	}
+    @ManyToOne
+    @JoinColumn(name = "id_sistema", nullable = false)
+    private Sistema sistema;
 
-	public Versao(String nomeBranch, String nome, String descricao,
-			Date dataCriacao, String nomeAutor, Boolean producao, Boolean head,
-			Sistema sistema) {
-		this.nome = nome;
-		this.nomeBranch = nomeBranch;
-		this.descricao = descricao;
-		this.dataCriacao = dataCriacao;
-		this.nomeAutor = nomeAutor;
-		this.producao = producao;
-		this.head = head;
-		this.sistema = sistema;
-	}
+    public Versao() {
+    }
 
-	public Integer getId() {
-		return this.id;
-	}
+    public Versao(String nomeBranch, String nome, String descricao,
+                  Date dataCriacao, String nomeAutor, Boolean producao, Boolean head,
+                  Sistema sistema) {
+        this.nome = nome;
+        this.nomeBranch = nomeBranch;
+        this.descricao = descricao;
+        this.dataCriacao = dataCriacao;
+        this.nomeAutor = nomeAutor;
+        this.producao = producao;
+        this.head = head;
+        this.sistema = sistema;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public Integer getId() {
+        return this.id;
+    }
 
-	public String getNomeBranch() {
-		return this.nomeBranch;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setNomeBranch(String nomeBranch) {
-		this.nomeBranch = nomeBranch;
-	}
+    public String getNomeBranch() {
+        return this.nomeBranch;
+    }
 
-	public String getNome() {
-		return this.nome;
-	}
+    public void setNomeBranch(String nomeBranch) {
+        this.nomeBranch = nomeBranch;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public String getNome() {
+        return this.nome;
+    }
 
-	public String getDescricao() {
-		return this.descricao;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    public String getDescricao() {
+        return this.descricao;
+    }
 
-	public Date getDataCriacao() {
-		return this.dataCriacao;
-	}
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 
-	public void setDataCriacao(Date dataCriacao) {
-		this.dataCriacao = dataCriacao;
-	}
+    public Date getDataCriacao() {
+        return this.dataCriacao;
+    }
 
-	public String getNomeAutor() {
-		return this.nomeAutor;
-	}
+    public void setDataCriacao(Date dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
 
-	public void setNomeAutor(String nomeAutor) {
-		this.nomeAutor = nomeAutor;
-	}
+    public String getNomeAutor() {
+        return this.nomeAutor;
+    }
 
-	public Boolean getProducao() {
-		return this.producao;
-	}
+    public void setNomeAutor(String nomeAutor) {
+        this.nomeAutor = nomeAutor;
+    }
 
-	public void setProducao(Boolean producao) {
-		this.producao = producao;
-	}
+    public Boolean getProducao() {
+        return this.producao;
+    }
 
-	public Boolean getHead() {
-		return this.head;
-	}
+    public void setProducao(Boolean producao) {
+        this.producao = producao;
+    }
 
-	public void setHead(Boolean head) {
-		this.head = head;
-	}
+    public Boolean getHead() {
+        return this.head;
+    }
 
-	public Sistema getSistema() {
-		return this.sistema;
-	}
+    public void setHead(Boolean head) {
+        this.head = head;
+    }
 
-	public void setSistema(Sistema sistema) {
-		this.sistema = sistema;
-	}
+    public Sistema getSistema() {
+        return this.sistema;
+    }
 
-	@Override
-	public String toString() {
-		return "Versao{id=" + this.id + ", nomeBranch='" + this.nomeBranch
-				+ '\'' + ", nomeVersao='" + this.nome + '\''
-				+ ", descricao='" + this.descricao + '\'' + ", dataCriacao="
-				+ this.dataCriacao + ", nomeAutor='" + this.nomeAutor + '\''
-				+ ", producao=" + this.producao + ", head=" + this.head
-				+ ", sistema=" + this.sistema + '}';
-	}
+    public void setSistema(Sistema sistema) {
+        this.sistema = sistema;
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if ((o == null) || (getClass() != o.getClass()))
-			return false;
+    @Override
+    public String toString() {
+        return "Versao{id=" + this.id + ", nomeBranch='" + this.nomeBranch
+                + '\'' + ", nomeVersao='" + this.nome + '\''
+                + ", descricao='" + this.descricao + '\'' + ", dataCriacao="
+                + this.dataCriacao + ", nomeAutor='" + this.nomeAutor + '\''
+                + ", producao=" + this.producao + ", head=" + this.head
+                + ", sistema=" + this.sistema + '}';
+    }
 
-		Versao that = (Versao) o;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if ((o == null) || (getClass() != o.getClass()))
+            return false;
 
-		if (this.id != null ? !this.id.equals(that.id) : that.id != null)
-			return false;
+        Versao that = (Versao) o;
 
-		return true;
-	}
+        if (this.id != null ? !this.id.equals(that.id) : that.id != null)
+            return false;
 
-	@Override
-	public int hashCode() {
-		return this.id != null ? this.id.hashCode() : 0;
-	}
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.id != null ? this.id.hashCode() : 0;
+    }
 
 } // fim da classe Versao.

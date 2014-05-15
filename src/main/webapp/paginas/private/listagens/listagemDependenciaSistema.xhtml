@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns="http://www.w3.org/1999/xhtml">
+
+<ui:composition template="/template/template.xhtml">
+    <ui:define name="content">
+
+        <h:form id="listagemForm">
+
+            <!-- Componente que mostra as mensagens lançadas na aplicação. -->
+            <p:messages autoUpdate="true" globalOnly="true" showDetail="true"
+                        showSummary="true"/>
+
+            <!-- Componente que mostra as dependencias cadastradas no sistemas. -->
+            <p:dataTable id="dependenciaDataTable" var="dependencia"
+                         value="#{sessionScope.dependencias}"
+                         rowKey="#{dependencia.nome}"
+                         emptyMessage="#{message['mensagem.vazio']}" paginator="true"
+                         rows="5"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5, 10, 20, 30"
+                         sortBy="#{dependencia.nome}">
+
+                <f:facet name="header">#{message['titulo.tabelaDependencia']}</f:facet>
+
+                <p:column headerText="#{message['coluna.nome']}">
+                    <h:outputText id="nomeOutputText" value="#{dependencia.nome}"/>
+                </p:column>
+
+                <f:facet name="footer">
+                </f:facet>
+            </p:dataTable>
+
+            <p:separator/>
+
+            <p:button id="sistemasButton"
+                      outcome="/paginas/private/listagens/listagemSistemas.xhtml?faces-redirect=true"
+                      value="#{message['botao.voltarSistemas']}"/>
+
+        </h:form>
+    </ui:define>
+</ui:composition>
+
+</html>

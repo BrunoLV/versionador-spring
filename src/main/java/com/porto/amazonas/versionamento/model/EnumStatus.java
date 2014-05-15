@@ -1,12 +1,13 @@
 package com.porto.amazonas.versionamento.model;
 
 /**
- * Enum que define os nomes possíveis para os status de sistemas utilizados na
- * aplicação.
+ * Enum que define os nomes possï¿½veis para os status de sistemas utilizados na
+ * aplicaï¿½ï¿½o.
+ *
  * @author BRUNO VIANA
  */
 public enum EnumStatus {
 
-	PRODUCAO, DESENVOLVIMENTO, DESCONTINUADO;
+    PRODUCAO, DESENVOLVIMENTO, DESCONTINUADO;
 
 } // fim do enum EnumStatus

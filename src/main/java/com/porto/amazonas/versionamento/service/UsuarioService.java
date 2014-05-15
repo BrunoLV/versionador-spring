@@ -5,21 +5,23 @@ import com.porto.amazonas.versionamento.model.EnumPapel;
 import com.porto.amazonas.versionamento.model.Usuario;
 
 /**
- * Interface que define o comportamento da classe de negócio para operações com
+ * Interface que define o comportamento da classe de negï¿½cio para operaï¿½ï¿½es com
  * a entidade Usuario.
+ *
  * @author BRUNO VIANA
  */
 public interface UsuarioService extends BaseService<Usuario> {
-	
-	void cadastrarUsuarioComDeterminadoPapel(Usuario usuario, EnumPapel papel) throws VersionamentoException;
 
-	/**
-	 * Método utilizado para consultar um usuario na aplicação utilizando a
-	 * matricula.
-	 * @param matricula que será utilizada na consulta.
-	 * @return Usuario resultado da consulta.
-	 * @throws VersionamentoException para qualquer erro que ocorra durante a execução do método.
-	 */
-	Usuario buscarUsuarioPorMatricula(String matricula) throws VersionamentoException;
+    void cadastrarUsuarioComDeterminadoPapel(Usuario usuario, EnumPapel papel) throws VersionamentoException;
+
+    /**
+     * Mï¿½todo utilizado para consultar um usuario na aplicaï¿½ï¿½o utilizando a
+     * matricula.
+     *
+     * @param matricula que serï¿½ utilizada na consulta.
+     * @return Usuario resultado da consulta.
+     * @throws VersionamentoException para qualquer erro que ocorra durante a execuï¿½ï¿½o do mï¿½todo.
+     */
+    Usuario buscarUsuarioPorMatricula(String matricula) throws VersionamentoException;
 
 } // fim da interface UsuarioService

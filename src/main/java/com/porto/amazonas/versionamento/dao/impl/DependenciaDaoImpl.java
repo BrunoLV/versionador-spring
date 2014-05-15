@@ -1,45 +1,45 @@
 package com.porto.amazonas.versionamento.dao.impl;
 
-import java.util.List;
-
+import com.porto.amazonas.versionamento.dao.DependenciaDao;
+import com.porto.amazonas.versionamento.model.Dependencia;
+import com.porto.amazonas.versionamento.model.Sistema;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import com.porto.amazonas.versionamento.dao.DependenciaDao;
-import com.porto.amazonas.versionamento.model.Dependencia;
-import com.porto.amazonas.versionamento.model.Sistema;
+import java.util.List;
 
 /**
- * Implementação DependenciaDao.
+ * Implementaï¿½ï¿½o DependenciaDao.
+ *
  * @author BRUNO VIANA
  */
 @Repository
 @Qualifier("dependenciaDao")
 public class DependenciaDaoImpl extends BaseDaoImpl<Dependencia> implements DependenciaDao {
 
-	private static final Class<Dependencia> CLASSE_PERSISTENTE = Dependencia.class;
+    private static final Class<Dependencia> CLASSE_PERSISTENTE = Dependencia.class;
 
-	public DependenciaDaoImpl() {
-		this.classePersistente = CLASSE_PERSISTENTE;
-	} // fim do método construtor
+    public DependenciaDaoImpl() {
+        this.classePersistente = CLASSE_PERSISTENTE;
+    } // fim do mï¿½todo construtor
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Dependencia> listarDependenciasDeUmSistema(Sistema sistema) {
-		Criteria criteria = this.obterCriteria(this.classePersistente);
-		criteria.createAlias("sistemas", "sis").add(Restrictions.idEq(sistema)).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-		return criteria.list();
-	} // fim do método listarDependenciasDeUmSistema
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Dependencia> listarDependenciasDeUmSistema(Sistema sistema) {
+        Criteria criteria = this.obterCriteria(this.classePersistente);
+        criteria.createAlias("sistemas", "sis").add(Restrictions.idEq(sistema.getId())).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        return criteria.list();
+    } // fim do mï¿½todo listarDependenciasDeUmSistema
 
-	@Override
-	public Dependencia buscarDependenciaComSistemasRelacionados(Dependencia dependencia) {
-		Criteria criteria = this.obterCriteria(this.classePersistente);
-		criteria.add(Restrictions.eq("id", dependencia.getId()));
-		criteria.setFetchMode("sistemas", FetchMode.JOIN);
-		return ((Dependencia)criteria.uniqueResult());
-	} // fim do método listarSistemasRelacionadosAUmaDependencia
+    @Override
+    public Dependencia buscarDependenciaComSistemasRelacionados(Dependencia dependencia) {
+        Criteria criteria = this.obterCriteria(this.classePersistente);
+        criteria.add(Restrictions.eq("id", dependencia.getId()));
+        criteria.setFetchMode("sistemas", FetchMode.JOIN);
+        return ((Dependencia) criteria.uniqueResult());
+    } // fim do mï¿½todo listarSistemasRelacionadosAUmaDependencia
 
 } // fim da classe DependenciaDaoImpl
