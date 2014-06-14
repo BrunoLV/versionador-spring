@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 /**
- * Implementa��o de UsuarioDao.
+ * Implementacao de UsuarioDao.
  *
  * @author BRUNO VIANA
  */
@@ -19,24 +19,24 @@ public class UsuarioDaoImpl extends BaseDaoImpl<Usuario> implements UsuarioDao {
     private static final Class<Usuario> CLASSE_PERSISTENTE = Usuario.class;
 
     /**
-     * M�todo construtor.
+     * Metodo construtor.
      */
     public UsuarioDaoImpl() {
         this.classePersistente = CLASSE_PERSISTENTE;
-    } // fim do m�todo construtor
+    } // fim do Metodo construtor
 
     @Override
     public Usuario buscarUsuarioPorMatricula(String matricula) {
         Criteria criteria = this.obterCriteria(this.classePersistente);
         criteria.add(Restrictions.eq("matricula", matricula));
         return (Usuario) criteria.uniqueResult();
-    } // fim do m�todo buscarUsuarioPorMatricula
+    } // fim do Metodo buscarUsuarioPorMatricula
 
     @Override
     public Usuario buscarUsuarioPorMatriculaESenha(String matricula, String senha) {
         Criteria criteria = this.obterCriteria(this.classePersistente);
         criteria.add(Restrictions.and(Restrictions.eq("matricula", matricula), Restrictions.eqProperty("senha", senha)));
         return (Usuario) criteria.uniqueResult();
-    } // fim do m�todo buscarUsuarioPorMatriculaESenha
+    } // fim do Metodo buscarUsuarioPorMatriculaESenha
 
 } // fim da classe UsuarioDaoImpl

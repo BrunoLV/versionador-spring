@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Implementa��o de VersaoDao.
+ * Implementacao de VersaoDao.
  *
  * @author BRUNO VIANA
  */
@@ -24,11 +24,11 @@ public class VersaoDaoImpl extends BaseDaoImpl<Versao> implements VersaoDao {
     private static final Class<Versao> CLASSE_PERSISTENTE = Versao.class;
 
     /**
-     * M�todo construtor.
+     * Metodo construtor.
      */
     public VersaoDaoImpl() {
         this.classePersistente = CLASSE_PERSISTENTE;
-    } // fim do m�todo construtor.
+    } // fim do Metodo construtor.
 
     @SuppressWarnings("unchecked")
     @Override
@@ -36,7 +36,7 @@ public class VersaoDaoImpl extends BaseDaoImpl<Versao> implements VersaoDao {
         Criteria criteria = this.obterCriteria(this.classePersistente);
         criteria.add(Restrictions.eq("sistema", sistema));
         return criteria.list();
-    } // fim do m�todo listarTodasDeUmSistema
+    } // fim do Metodo listarTodasDeUmSistema
 
     @SuppressWarnings("unchecked")
     @Override
@@ -44,7 +44,7 @@ public class VersaoDaoImpl extends BaseDaoImpl<Versao> implements VersaoDao {
         Criteria criteria = this.obterCriteria(this.classePersistente);
         criteria.add(Restrictions.eq("sistema", sistema)).add(Restrictions.between("dataCriacao", dataInicio, dataFinal));
         return criteria.list();
-    } // fim do m�todo listarTodasVersoesDeUmSistemaPorPeriodo
+    } // fim do Metodo listarTodasVersoesDeUmSistemaPorPeriodo
 
     @Override
     public void atualizarStatusProducaoDeVersaosDiferentesDeUmaEmEspecifico(
@@ -55,6 +55,6 @@ public class VersaoDaoImpl extends BaseDaoImpl<Versao> implements VersaoDao {
         query.setParameter("idVersao", versao.getId());
         query.setParameter("idSistema", versao.getSistema().getId());
         query.executeUpdate();
-    } // fim do m�todo atualizarStatusProducaoDeVersaosDiferentesDeUmaEmEspecifico
+    } // fim do Metodo atualizarStatusProducaoDeVersaosDiferentesDeUmaEmEspecifico
 
 } // fim da classe VersaoDaoImpl

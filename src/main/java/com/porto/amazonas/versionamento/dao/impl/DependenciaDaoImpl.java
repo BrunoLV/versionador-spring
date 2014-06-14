@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * Implementa��o DependenciaDao.
+ * Implementacao DependenciaDao.
  *
  * @author BRUNO VIANA
  */
@@ -24,15 +24,15 @@ public class DependenciaDaoImpl extends BaseDaoImpl<Dependencia> implements Depe
 
     public DependenciaDaoImpl() {
         this.classePersistente = CLASSE_PERSISTENTE;
-    } // fim do m�todo construtor
+    } // fim do metodo construtor
 
     @SuppressWarnings("unchecked")
     @Override
     public List<Dependencia> listarDependenciasDeUmSistema(Sistema sistema) {
         Criteria criteria = this.obterCriteria(this.classePersistente);
-        criteria.createAlias("sistemas", "sis").add(Restrictions.idEq(sistema.getId())).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        criteria.createAlias("sistemas", "sis").add(Restrictions.eq("sis.id", sistema.getId()));
         return criteria.list();
-    } // fim do m�todo listarDependenciasDeUmSistema
+    } // fim do metodo listarDependenciasDeUmSistema
 
     @Override
     public Dependencia buscarDependenciaComSistemasRelacionados(Dependencia dependencia) {
@@ -40,6 +40,6 @@ public class DependenciaDaoImpl extends BaseDaoImpl<Dependencia> implements Depe
         criteria.add(Restrictions.eq("id", dependencia.getId()));
         criteria.setFetchMode("sistemas", FetchMode.JOIN);
         return ((Dependencia) criteria.uniqueResult());
-    } // fim do m�todo listarSistemasRelacionadosAUmaDependencia
+    } // fim do metodo listarSistemasRelacionadosAUmaDependencia
 
 } // fim da classe DependenciaDaoImpl

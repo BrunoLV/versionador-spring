@@ -2,7 +2,7 @@
 <configuration>
 
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>C:/Users/BRUNO VIANA/versionamento.log</file>
+        <file>/home/versionamento/LOG/tarefas-jee.log/versionamento.log</file>
         <append>true</append>
         <encoder>
             <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
@@ -10,7 +10,7 @@
     </appender>
 
     <appender name="FILE-ERR" class="ch.qos.logback.core.FileAppender">
-        <file>C:/Users/BRUNO VIANA/versionamento-err.log</file>
+        <file>/home/versionamento/LOG/tarefas-jee.log/versionamento-err.log</file>
         <append>true</append>
         <encoder>
             <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>

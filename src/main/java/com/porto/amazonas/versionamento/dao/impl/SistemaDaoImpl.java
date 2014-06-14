@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * Implementa��o de SistemaDao.
+ * Implementacao de SistemaDao.
  *
  * @author BRUNO VIANA
  */
@@ -22,11 +22,11 @@ public class SistemaDaoImpl extends BaseDaoImpl<Sistema> implements SistemaDao {
     private static final Class<Sistema> CLASSE_PERSISTENTE = Sistema.class;
 
     /**
-     * M�todo construtor.
+     * Metodo construtor.
      */
     public SistemaDaoImpl() {
         this.classePersistente = CLASSE_PERSISTENTE;
-    } // fim do m�todo construtor
+    } // fim do Metodo construtor
 
     @SuppressWarnings("unchecked")
     @Override
@@ -34,6 +34,6 @@ public class SistemaDaoImpl extends BaseDaoImpl<Sistema> implements SistemaDao {
         Criteria criteria = this.obterCriteria(this.classePersistente);
         criteria.add(Restrictions.eq("status", statusSistema));
         return criteria.list();
-    } // fim do m�todo listarTodosSistemasPorStatus
+    } // fim do Metodo listarTodosSistemasPorStatus
 
 } // fim da classe SistemaDaoImpl
